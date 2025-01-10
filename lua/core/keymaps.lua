@@ -3,13 +3,28 @@ vim.g.mapleader = ' ' -- 设置 <Space> 为 leader 键
 
 local keymap = vim.keymap
 
--- 可视模式
-keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv") -- 单行、多行下移
-keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv") -- 单行、多行上移
-
 -- 普通模式
-keymap.set('n', "<C-\\>", "<C-w>v") -- 垂直分割窗口 Ctrl + \
-keymap.set('n', "<C-k><C-\\>", "<C-w>s") -- 水平分割窗口 Ctrl + K Ctrk + \
+keymap.set('n', '<S-Up>', 'v<Up>', { noremap = true, silent = true })
+keymap.set('n', '<S-Down>', 'v<Down>', { noremap = true, silent = true })
+keymap.set('n', '<S-Left>', 'v<Left>', { noremap = true, silent = true })
+keymap.set('n', '<S-Right>', 'v<Right>', { noremap = true, silent = true })
+keymap.set('n', '<C-v>', '"+p', { noremap = true, silent = true })
+
+-- 插入模式
+keymap.set('i', '<S-Up>', '<Esc>v<Up>', { noremap = true, silent = true })
+keymap.set('i', '<S-Down>', '<Esc>v<Down>', { noremap = true, silent = true })
+keymap.set('i', '<S-Left>', '<Esc>v<Left>', { noremap = true, silent = true })
+keymap.set('i', '<S-Right>', '<Esc>v<Right>', { noremap = true, silent = true })
+keymap.set('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
+keymap.set('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+-- 视觉模式
+keymap.set('v', '<S-Up>', '<Up>', { noremap = true, silent = true })
+keymap.set('v', '<S-Down>', '<Down>', { noremap = true, silent = true })
+keymap.set('v', '<S-Left>', '<Left>', { noremap = true, silent = true })
+keymap.set('v', '<S-Right>', '<Right>', { noremap = true, silent = true })
+keymap.set('v', '<S-Right>', '<Right>', { noremap = true, silent = true })
+keymap.set('v', '<C-c>', '"+yi', { noremap = true, silent = true })
 
 -- 创建终端缓冲区并执行命令的辅助函数
 local function create_term(cmd, name, size)
@@ -52,7 +67,7 @@ end, {
 
 -- 构建命令
 vim.api.nvim_create_user_command('Build', function()
-  create_term('cmake --build build --parallel', 'CMake 构建', 2)
+  create_term('cmake --build build --parallel', 'CMake 构建', 10)
 end, {
   desc = 'CMake 构建项目'
 })
@@ -74,21 +89,20 @@ end, {
 
 -- 测试命令
 vim.api.nvim_create_user_command('Test', function()
-  create_term('ctest --test-dir build', 'CTest 测试', 3)
+  create_term('ctest --test-dir build', 'CTest 测试', 10)
 end, {
   desc = 'CTest 运行测试'
 })
 
 -- 运行命令
 vim.api.nvim_create_user_command('Run', function(args)
-  local executable = './build/' .. args.args
-  -- 检查可执行文件是否存在
+  local executable = './build/' .. (args.args ~= '' and args.args or 'demo')
   if vim.fn.filereadable(executable) == 0 then
     vim.notify('可执行文件 ' .. executable .. ' 不存在', vim.log.levels.ERROR)
     return
   end
-  create_term(executable, '可执行程序 ' .. args.args .. ' 运行', 5)
+  create_term(executable, '可执行程序 ' .. args.args .. ' 运行', 10)
 end, {
-  nargs = 1,
+  nargs = '?',
   desc = '运行可执行文件'
 })

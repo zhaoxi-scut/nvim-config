@@ -15,7 +15,7 @@ opt.autoindent = true -- 自动缩进
 
 -- UI 配置
 opt.number = true -- 显示绝对行号
-opt.relativenumber = true -- 显示相对行号
+opt.relativenumber = false -- 不显示相对行号
 opt.cursorline = true -- 高亮当前行
 opt.splitbelow = true -- 新窗口在下方打开
 opt.splitright = true -- 新窗口在右侧打开
