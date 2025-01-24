@@ -54,3 +54,14 @@ npm install
 ### 可视模式
 
 - `Ctrl + C` 复制选中内容，并进入插入模式
+
+## 插件列表
+
+- [coc.nvim](https://github.com/neoclide/coc.nvim) 自动补全插件，及其子扩展
+- [copilot](https://github.com/github/copilot.vim) GitHub Copilot 插件
+- [everforest](https://github.com/sainnhe/everforest) 主题插件
+- [lualine](https://github.com/nvim-lualine/lualine.nvim) 状态栏插件
+- [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) 文件树插件
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) 语法高亮插件
+- [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow) 括号颜色显示插件
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) 窗口切换插件

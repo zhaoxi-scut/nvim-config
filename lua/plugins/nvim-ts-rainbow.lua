@@ -1,1 +1,3 @@
-return {'p00f/nvim-ts-rainbow'}
+return {
+  'p00f/nvim-ts-rainbow'
+}
