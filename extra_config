@@ -1,0 +1,32 @@
+#!/bin/bash
+
+me=`whoami`
+
+if [ $me == "root" ]; then
+    echo -e "\033[31mPlease DON'T run this script as root!\033[0m"
+    exit 1
+fi
+
+echo -e "Please make sure you have installed \033[33mNeovim (>=0.10)\033[0m and \033[33mNode.js\033[0m (>=16.18.0)"
+
+read -p "Do you want to continue? [Y/n] " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Installation canceled."
+    exit
+fi
+
+# clangd
+echo -e "\033[33mclangd is installing...\033[0m"
+sudo apt install -y clangd
+echo -e "\033[32mclangd installed!\033[0m"
+
+# coc.nvim
+echo -e "\033[33mcoc.nvim extra dependencies are installing...\033[0m"
+cd ~/.local/share/nvim/lazy/coc.nvim
+npm install --silent
+nvim --headless -c 'CocInstall -sync coc-clangd coc-cmake coc-python|q'
+echo -e "\033[32mcoc.nvim extra dependencies installed!\033[0m"
+
+# end
+echo -e "\033[32mInstallation completed!\033[0m"

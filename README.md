@@ -9,28 +9,25 @@ git clone https://github.com/zhaoxi-scut/nvim-config
 mv nvim-config nvim # 需要重命名为 nvim
 ```
 
-在终端输入 `nvim` 以打开 Neovim，打开后即可自动安装插件，在安装插件过程可能会遇到 `coc.nvim` 的安装问题，一般进入 `$HOME/.local/share/nvim/lazy/coc.nvim` 文件夹，执行
+在终端输入 `nvim` 以打开 Neovim，打开后即可自动安装插件，在安装插件过程可能会遇到 `coc.nvim` 的安装问题，执行
 
 ```bash
-npm install
+chmod +x extra_config
+./extra_config
 ```
 
 即可解决。
 
 ## 开发环境准备
 
-若要使用 `coc.nvim` 的自动补全功能，还需要安装 `coc` 扩展以启用 LSP 支持，在 Neovim 中执行
+若要使用 `coc.nvim` 的自动补全功能，还需要安装 `coc` 扩展以启用 LSP 支持，`extra_config` 预先安装了
 
-- `:CocInstall coc-clangd` 安装 C/C++ 的补全扩展，需要安装 `clangd`，Linux 用户可以输入
+- `coc-clangd` C/C++ 的补全扩展
+- `coc-cmake` CMake 的补全扩展
+- `coc-python` Python 的补全扩展
 
-  ```bash
-  sudo apt install clangd
-  ```
-  
-  进行安装
+两个插件，还有其他语言需求可以在 Neovim 中执行
 
-- `:CocInstall coc-cmake` 安装 CMake 的补全扩展
-- `:CocInstall coc-python` 安装 Python 的补全扩展
 - `:CocInstall coc-json` 安装 JSON 的补全扩展
 - `:CocInstall coc-yaml` 安装 YAML 的补全扩展
 
