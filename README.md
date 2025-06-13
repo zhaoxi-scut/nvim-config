@@ -30,7 +30,7 @@ chmod +x extra_config
 - `coc-cmake` CMake 的补全扩展
 - `coc-python` Python 的补全扩展
 
-两个插件，还有其他语言需求可以在 Neovim 中执行
+3 个插件，还有其他语言需求可以在 Neovim 中执行
 
 - `:CocInstall coc-json` 安装 JSON 的补全扩展
 - `:CocInstall coc-yaml` 安装 YAML 的补全扩展
