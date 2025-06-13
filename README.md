@@ -2,7 +2,7 @@
 
 ## 下载安装
 
-使用前请确保已安装 [Neovim](https://github.com/neovim/neovim/releases/latest) (>=0.10) 和 [Node.js](https://nodejs.org/zh-cn/download)，打开终端执行以下命令：
+使用前请确保已安装 [Neovim](https://github.com/neovim/neovim/releases/latest) (>=0.10) 和 [Node.js](https://nodejs.org/zh-cn/download) (>=16.18.0)，打开终端执行以下命令：
 
 ```bash
 # 进入 .config 目录
